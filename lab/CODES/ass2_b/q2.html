@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+	<head>
+		<title>21104039</title>
+		<script>
+			function maxx(){
+				var ff=document.getElementById("f").value;
+				 var ss=document.getElementById("s").value;
+				if(ff<ss)
+				{
+					document.getElementById("ans").innerHTML="<b>the samllest number is </b>"+ ff;
+				}
+				else {document.getElementById("ans").innerHTML="<b>the samllest number is </b>"+ss;}
+			}
+		</script>
+	</head>
+	<body>
+		<h3>FIND THE MAXIMUM NUMBER BETWEEN TWO</h3>
+		<p>first number: <input type="number" id="f"></p>
+		<p>second number: <input type="number" id="s"></p>
+		<p><input type="button" onClick="maxx()" value="evaluate"></p>
+		<p id="ans"></p>
+		
+	</body>
+</html>
