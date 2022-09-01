@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+	<head>
+		<title>21104039</title>
+		
+
+	</head>
+	<body>
+		<h1>Registration Form</h1>
+		<form name="myform" onSubmit="return validation()">
+			<p>User id : <input type="text" name="userId" id="userId"></p>
+			<p>Password : <input type="password" id="password"></p>
+			<p>Name : <input type="text" id="name"></p>
+			<p>Address : <textarea rows="2" cols="25"></textarea></p>
+			<p>Country : 
+					<select name="country" id="country" >
+						<option value="">(please select a country)</option>
+						<option value="usa">USA</option>
+						<option value="india">INDIA</option>
+						<option value="russia">RUSSIA</option>
+					</select>
+			</p>
+			<p>ZIP Code : <input type="number" id="zipCode"></p>
+			<p>Email : <input type="text" id="email"></p>
+		<!--	<fieldset> -->
+				<p>Sex : <input type="radio" name="sex" id="male" required>Male <input type="radio" name="sex" id="female">Female </p>
+		<!--  </fieldset>  -->
+				<p>Language : <input type="checkbox"  id="lang" >English<input type="checkbox"  id="lang">Non English</p>
+			<p>About : <textarea rows="2" cols="25"></textarea></p>
+			<input type="submit" value="submit" >
+		</form>
+		<script>
+			function validation()
+			{
+				var id=document.getElementById("userId").value;
+				if(id.length<5 || id.length>12)
+				{
+					alert("user id : Required and must be of length 5 to 12");
+					return false;
+				}
+				var pass=document.getElementById("password").value;
+				if(pass.length<7 || pass.length>12)
+				{
+					alert("password : Required and must be of length 7 to 12");
+					return false;
+				}
+				var name=document.getElementById("name").value;
+				if(name.length<1)
+				{
+					alert("name : Required and alphabates only");
+					return false;
+				}
+				for(let i=0;i<name.length;i++)
+				{
+					if(name[i]<'a' || name[i]>'z')
+					{
+						alert("name : Required and alphabates only");
+						return false;
+					}
+				}
+				var con=document.getElementById("country").value;
+				if(con=="")
+				{
+					alert("country : Required. Must select a country");
+					return false;
+				}
+				var con=document.getElementById("zipCode").value;
+				if(con=="")
+				{
+					alert("ZIP CODE : Required. Must be numeric only");
+					return false;
+				}
+				var e=document.getElementById("email").value;
+				var at=false;
+				for(let i=0;i<e.length;i++)
+				{
+					if(e[i]=='@')at=true;
+				}
+				if(!at)
+				{
+					alert("Invalid email");
+					return false;
+				}
+				
+			}
+
+		</script>
+	</body>
+</html>

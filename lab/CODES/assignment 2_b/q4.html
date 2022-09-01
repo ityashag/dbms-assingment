@@ -1,0 +1,55 @@
+<!doctype>
+<html>
+	<head> 
+		<title>21104039</title>
+		<script>
+			function p(){
+				alert("WELCOME TO STARBUCKS! I'M YOUR STARBUCKS ASSISTANT AND I WILL HELP YOU TO CREATE YOUR WEEKLY STARBUCKS COFFEE SCHEDULE");
+			
+				alert("TO START WE NEED TO KNOW THAT YOUR COFFEE PREFERENCES ARE FOR EACH DAY OF THE WEEK. LETS'S START WITH");
+					
+					var a={};
+					
+					let k=prompt("sunday : would you prefer a latte, a cappuccino or a frappucino ?","");
+					let j=prompt("what size coffee would you like ? (tall,grande,venti)","");
+					a["sunday"]=(j+" "+k);
+
+
+					k=prompt("monday : would you prefer a latte, a cappuccino or a frappucino ?","");
+					j=prompt("what size coffee would you like ? (tall,grande,venti)","");
+					a["monday"]=(j+" "+k);
+
+
+ 					k=prompt("tuesday : would you prefer a latte, a cappuccino or a frappucino ?","");
+					j=prompt("what size coffee would you like ? (tall,grande,venti)","");
+					a["tuesday"]=(j+" "+k);
+
+ 					k=prompt("wednesday : would you prefer a latte, a cappuccino or a frappucino ?","");
+					 j=prompt("what size coffee would you like ? (tall,grande,venti)","");
+					a["wednesday"]=(j+" "+k);
+
+ 					k=prompt("thrusday : would you prefer a latte, a cappuccino or a frappucino ?","");
+					j=prompt("what size coffee would you like ? (tall,grande,venti)","");
+					a["thrusday"]=(j+" "+k);
+ 					k=prompt("friday : would you prefer a latte, a cappuccino or a frappucino ?","");
+					 j=prompt("what size coffee would you like ? (tall,grande,venti)","");
+					a["friday"]=(j+" "+k);
+ 					k=prompt("saturday : would you prefer a latte, a cappuccino or a frappucino ?","");
+					 j=prompt("what size coffee would you like ? (tall,grande,venti)","");
+					a["saturday"]=(j+" "+k);
+
+
+					document.getElementById("ra").innerHTML="<b>The following coffee selection will be delivered<br>to your home or office . Thank you for choosing Starbucks!<br>Sunday : </b>"+a["sunday"]+"<br><b>Monday : </b>"+a["monday"]+"<br><b>Tuesday : </b>"+a["tuesday"]+"<br><b>Wednesday : </b>"+a["wednesday"]+"<br><b>Thursday : </b>"+a["thrusday"]+"<br><b>Friday : </b>"+a["friday"]+"<br><b>Saturday : </b>"+a["saturday"];
+					
+
+					console.log(a);
+				
+			}
+				
+		</script>
+	</head>
+	<body>
+		<button onClick="p()"> click</button>
+		<p id="ra"></p>
+	</body>
+</html>
