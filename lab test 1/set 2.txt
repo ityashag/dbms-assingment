@@ -1,0 +1,78 @@
+create database lb1;
+use lb1;
+
+create table guitars(gid int primary key, brand varchar(20), price int);
+create table players(pid int primary key, name varchar(20),age int);
+create table played(gid int , pid int , play_data date, foreign key (gid) references guitars(gid) , foreign key (pid) references players(pid));
+
+insert into guitars values(1,'aaa',40000),(2,'aab',50000),(3,'aba',500001),(4,'abb',60000),(5,'aaaaa',90000)(8,'kk',4000);
+insert into players values(1,'lavish',20),(2,'ram',33),(3,'sham',44),(4,'aadi',90);
+insert into played values(1,1,'2022-10-11'),(2,1,'2022-01-11'),(3,1,'2022-02-11'),(2,3,'2002-10-11'),(4,2,'2002-09-21'),(4,3,'2003-09-01');
+
+
+
+
+odd machine
+
+question 1
+select brand,price from guitars where price>50000;
+
+
+ans
+aba 
+abb
+aaaaa
+
+question 2
+
+select g.gid from guitars g where 2-1= (select count(distinct(price)) from guitars g1 where g.price<g1.price);
+
+
+
+question 3
+
+select p.pid from players p inner join played p1 on p.pid=p1.pid group by p.pid having count(distinct(gid)) > 1;
+
+
+
+question 4
+
+select * from guitars where gid not in (select distinct(gid) from played);
+
+
+
+question 5
+
+insert into played values(5,3,'2022-09-01');
+
+select * from guitars where gid in (select gid from played p where p.play_data like '2022%') and brand like '_____';
+
+
+even machine
+
+q1
+
+select age,count(pid) from players group by age having age <>18;
+
+q2
+select * from guitars g where 3-1 = (select count(distinct(g1.price)) from guitars g1 where g.price>g1.price);
+
+q3
+
+insert into played values (2,4,'2001-01-11');
+select brand from guitars g inner join played p on g.gid = p.gid group by g.gid having count(distinct(pid))>2;
+
+
+q4 
+insert into players values (6,'rohit',4);
+
+select * from players where pid not in( select distinct(pid) from played);
+
+
+q5
+
+insert into players values(7,'Arin',21);
+insert into played values (1,7,'2022-09-11');
+
+
+select * from players p inner join played p1 on p.pid=p1.pid where p.name like 'A%' and p1.play_data like '_____09%';

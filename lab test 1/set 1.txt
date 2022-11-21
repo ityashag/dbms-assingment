@@ -1,0 +1,78 @@
+create table toys (toys_nums int primary key ,name varchar(20), price int , age_group varchar(10) );
+
+create table manufacturer(manu_id int primary key,name varchar(20), toys_nums int primary key, foreign key(toys_nums) references toys(toys_nums));
+
+create table customer(cust_id int,name varchar(20),city varchar(20), last_order_data date, toys_nums int, 
+primary key(cust_id,toys_nums), foreign key(toys_nums) references toys(toys_nums));
+
+
+insert into toys(toys_nums,name,price,age_group) values (1,'bike',20,'5-10') ,(2,'car',30,'5-10'),(3,'ps-5',40,'20-30'),(4,'farm-house',20,'5-10');
+
+insert into customer(cust_id,name,city,last_order_data,toys_nums) values(1,'sumit sinha','delhi','2020-11-10',1),(2,'lavish','delhi','2023-12-10',4),(2,'arin','noida','2024-12-11',3),(4,'yash','bareilly','2020-10-11',3);
+
+insert into manufacturer values(1,'fischer-price',1),(1,'fischer-price',2),(2,'fp',3),(2,'fp',2),(3,'fr',4);
+
+
+odd machine
+q1
+
+select c.city , t.name from toys t inner join customer c on c.toys_nums=t.toys_nums where c.name="sumit sinha";
+
+ans (delhi bike)
+
+q2
+
+select name , price from toys where toys_nums in( select toys_nums from manufacturer where name='fischer-price');
+
+ans (bike 20),(car,30)
+
+
+q3
+
+select toys_nums from toys where toys_nums <> (select toys_nums from toys where name="farm-house") and (price,age_group) in (select price , age_group from toys where name="farm-house");
+
+
+ans 1
+
+
+q4
+select count(toys_nums), age_group from toys group by age_group;
+
+ans (3,5-10),(1,20-30)
+
+
+
+q5
+ select name from toys where price >( select price from toys where name ='farm-house');
+
+ans (car),(ps-5)
+
+
+
+even machine
+
+
+q1
+
+
+
+q2
+select count(toys_nums),manu_id from manufacturer group by manu_id;
+
+ans (2,1)(2,2),(1,3)
+
+q3
+select name from toys where price>(select avg(price) from toys);
+
+
+q4
+
+select count(cust_id),city from customer group by city order by city;
+
+ans car,ps-5
+
+q5
+
+select distinct(name) from toys where toys_nums in (select toys_nums from manufacturer where name in('fp','fy'));
+
+ans car,ps-5
